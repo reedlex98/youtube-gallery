@@ -100,4 +100,26 @@
 <link rel="stylesheet" href="./fancy/jquery.fancybox.css" media="screen">
 <script src="./fancy/jquery.fancybox-media.js"></script>
 
+<script>
+    $(document).ready(function() {
+        $('.fancybox').fancybox()
+        const fbWidth = 800
+        const fbHeight = 450
+
+        $('.fancybox-media')
+            .attr('rel', 'media-gallery')
+            .fancybox({
+                arrows: false,
+                'maxWidth': fbWidth,
+                'maxHeight': fbHeight,
+                'width': fbWidth,
+                'height': fbHeight,
+                helpers: {
+                    media: {},
+                    buttons: {}
+                }
+            })
+    })
+</script>
+
 </html>
