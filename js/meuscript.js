@@ -1,5 +1,6 @@
 const channel = 'UC4X7J9D6VbTIwnFDFNkfQ1A'
 let uploadId = ''
+const videoUrl = []
 
 $(document).ready(function() {
     $.get("https://www.googleapis.com/youtube/v3/channels", {
@@ -26,16 +27,19 @@ $(document).ready(function() {
                     image = element.snippet.thumbnails.medium.url
                     title = element.snippet.title
                     description = element.snippet.description
+                    address = element.snippet.resourceId.videoId
                     data = element.snippet.publishedAt.split('T')[0].split('-').reverse().join('/')
                     listItem = `<li>
-                                    <div class="photo">
-                                        <img src="${image}" alt="${title}">
-                                        <div class="text">
-                                            <p class="title">${title}</p>
-                                            <p>Release date: ${data}</p>
-                                            <p class="desc">${description}</p>
+                                    <a href="https://www.youtube.com/watch?v=${address}" class="fancybox-media">
+                                        <div class="photo">
+                                            <img src="${image}" alt="${title}">
+                                            <div class="text">
+                                                <p class="title">${title}</p>
+                                                <p>Release date: ${data}</p>
+                                                <p class="desc">${description}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </li>`
                     $('#janela ul').append(listItem)
                 });
