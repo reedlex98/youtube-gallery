@@ -1,10 +1,10 @@
-<html lang="pt">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <title>You Tube API v3</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <style>
         body {
             background: #F0F0F0;
@@ -82,44 +82,24 @@
             overflow-x: hidden
         }
     </style>
+    <link rel="stylesheet" media="screen" href="./fancy/jquery.fancybox.css">
 </head>
-<div id="janela">
-    <ul>
-    </ul>
-    <!-- Testando o fancy -->
-    <a href="https://www.youtube.com/watch?v=iJXHfeYIq3A" class="fancybox-media">click here</a>
-</div>
 
-<!-- Importando jquery e o meuscript -->
-<script src="./js/jquery.js"></script>
-<script src="./js/meuscript.js"></script>
-<script src="./js/jquery-3.4.1.min.js"></script>
+<body>
 
-<!-- Importando dependencias do fancybox -->
-<script src="./fancy/jquery.fancybox.js"></script>
-<link rel="stylesheet" href="./fancy/jquery.fancybox.css" media="screen">
-<script src="./fancy/jquery.fancybox-media.js"></script>
+    <div id="janela">
+        <ul>
+        </ul>
+    </div>
 
-<script>
-    $(document).ready(function() {
-        $('.fancybox').fancybox()
-        const fbWidth = 800
-        const fbHeight = 450
+    <script src="./js/jquery-3.4.1.min.js"></script>
 
-        $('.fancybox-media')
-            .attr('rel', 'media-gallery')
-            .fancybox({
-                arrows: false,
-                'maxWidth': fbWidth,
-                'maxHeight': fbHeight,
-                'width': fbWidth,
-                'height': fbHeight,
-                helpers: {
-                    media: {},
-                    buttons: {}
-                }
-            })
-    })
-</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+    <script src="./js/meuscript.js"></script>
+
+</body>
 
 </html>

@@ -17,12 +17,11 @@ $(document).ready(function() {
     function getVideos(id) {
         $.get("https://www.googleapis.com/youtube/v3/playlistItems", {
                 part: 'snippet',
-                maxResults: 45,
+                maxResults: 10,
                 playlistId: id,
                 key: 'AIzaSyDuWqeAUTS8liVbdDTAEDGosHZO-1tk70s'
             },
             function(data, textStatus, jqXHR) {
-                console.log(data)
                 $.each(data.items, function(index, element) {
                     image = element.snippet.thumbnails.medium.url
                     title = element.snippet.title
@@ -30,9 +29,9 @@ $(document).ready(function() {
                     address = element.snippet.resourceId.videoId
                     data = element.snippet.publishedAt.split('T')[0].split('-').reverse().join('/')
                     listItem = `<li>
-                                    <a href="https://www.youtube.com/watch?v=${address}" class="fancybox-media">
+                                    <a data-src="https://www.youtube.com/watch?v=${address}" data-fancybox data-caption="${title}" class="fancybox-media">
                                         <div class="photo">
-                                            <img src="${image}" alt="${title}">
+                                            <img src="${image}" alt="${title}"/>
                                             <div class="text">
                                                 <p class="title">${title}</p>
                                                 <p>Release date: ${data}</p>
@@ -46,5 +45,24 @@ $(document).ready(function() {
             }
         );
     }
+
+    $('.fancybox').fancybox()
+    const fbWidth = 800
+    const fbHeight = 450
+
+    $('.fancybox-media')
+        .attr('rel', 'media-gallery')
+        .fancybox({
+            selector: '.imglist a:visible',
+            arrows: false,
+            'maxWidth': fbWidth,
+            'maxHeight': fbHeight,
+            'width': fbWidth,
+            'height': fbHeight,
+            helpers: {
+                media: {},
+                buttons: {}
+            }
+        })
 
 })
